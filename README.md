@@ -87,16 +87,6 @@ All models are scored on the same final **104 weeks** (2-year horizon) with
 making seasonal naive the reference benchmark. The split is strictly
 chronological.
 
-## Avoiding data leakage
-
-- Lag/rolling features use `shift()` (rolling stats on `shift(1)`), so a row for
-  week *t* uses only data up to *t-1* (checked in `tests/test_features.py`).
-- Strictly chronological train/test split.
-- The LSTM's scaler is fitted on training hours only.
-- Multi-step forecasts are recursive — lags come from predictions, not actuals.
-- Test-period temperature is *observed* future weather, so those runs are
-  reported as **conditional** forecasts.
-
 ## Testing
 
 ```bash
